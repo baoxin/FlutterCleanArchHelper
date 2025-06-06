@@ -1,0 +1,140 @@
+{
+  "name": "flutter-clean-arch-helper",
+  "displayName": "Flutter Clean Architecture Helper",
+  "description": "快速创建 Flutter Clean Architecture 目录结构的 VSCode 插件",
+  "version": "1.0.0",
+  "publisher": "暴鑫",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Snippets"
+  ],
+  "keywords": [
+    "flutter",
+    "clean architecture",
+    "directory structure",
+    "scaffold"
+  ],
+  "activationEvents": [
+    "onLanguage:dart"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "flutter-clean-arch.createBaseStructure",
+        "title": "创建 Clean Architecture 基础结构",
+        "category": "Flutter Clean Arch"
+      },
+      {
+        "command": "flutter-clean-arch.createFeature",
+        "title": "创建 Feature 模块",
+        "category": "Flutter Clean Arch"
+      },
+      {
+        "command": "flutter-clean-arch.configureStructure",
+        "title": "配置目录结构",
+        "category": "Flutter Clean Arch"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "flutter-clean-arch.createBaseStructure",
+          "when": "explorerResourceIsFolder",
+          "group": "flutter-clean-arch@1"
+        },
+        {
+          "command": "flutter-clean-arch.createFeature",
+          "when": "explorerResourceIsFolder",
+          "group": "flutter-clean-arch@2"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "flutter-clean-arch.createBaseStructure",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "flutter-clean-arch.createFeature",
+          "when": "workspaceFolderCount > 0"
+        },
+        {
+          "command": "flutter-clean-arch.configureStructure",
+          "when": "workspaceFolderCount > 0"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Flutter Clean Architecture Helper",
+      "properties": {
+        "flutterCleanArch.baseStructure": {
+          "type": "object",
+          "default": {
+            "lib": {
+              "core": {
+                "constants": {},
+                "errors": {},
+                "network": {},
+                "usecases": {},
+                "utils": {}
+              },
+              "features": {},
+              "shared": {
+                "data": {
+                  "datasources": {},
+                  "models": {},
+                  "repositories": {}
+                },
+                "domain": {
+                  "entities": {},
+                  "repositories": {},
+                  "usecases": {}
+                },
+                "presentation": {
+                  "bloc": {},
+                  "pages": {},
+                  "widgets": {}
+                }
+              }
+            }
+          },
+          "description": "Clean Architecture 基础目录结构配置"
+        },
+        "flutterCleanArch.featureStructure": {
+          "type": "object",
+          "default": {
+            "data": {
+              "datasources": {},
+              "models": {},
+              "repositories": {}
+            },
+            "domain": {
+              "entities": {},
+              "repositories": {},
+              "usecases": {}
+            },
+            "presentation": {
+              "bloc": {},
+              "pages": {},
+              "widgets": {}
+            }
+          },
+          "description": "Feature 模块目录结构配置"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  }
+}
