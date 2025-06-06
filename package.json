@@ -8,6 +8,15 @@
     "name": "baoxin",
     "email": "v-baoxin@foxmail.com"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/baoxin/FlutterCleanArchHelper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/baoxin/FlutterCleanArchHelper/issues"
+  },
+  "homepage": "https://github.com/baoxin/FlutterCleanArchHelper#readme",
   "engines": {
     "vscode": "^1.74.0"
   },
