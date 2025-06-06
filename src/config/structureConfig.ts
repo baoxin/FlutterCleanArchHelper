@@ -59,7 +59,7 @@ export const DEFAULT_FEATURE_STRUCTURE: DirectoryStructure = {
  * 获取插件配置
  */
 export function getPluginConfig(): PluginConfig {
-  const config = vscode.workspace.getConfiguration('flutterCleanArch');
+  const config = vscode.workspace.getConfiguration('cleanArch');
   
   return {
     baseStructure: config.get('baseStructure') || DEFAULT_BASE_STRUCTURE,
@@ -71,7 +71,7 @@ export function getPluginConfig(): PluginConfig {
  * 更新插件配置
  */
 export async function updatePluginConfig(newConfig: Partial<PluginConfig>): Promise<void> {
-  const config = vscode.workspace.getConfiguration('flutterCleanArch');
+  const config = vscode.workspace.getConfiguration('cleanArch');
   
   if (newConfig.baseStructure) {
     await config.update('baseStructure', newConfig.baseStructure, vscode.ConfigurationTarget.Global);
@@ -86,7 +86,7 @@ export async function updatePluginConfig(newConfig: Partial<PluginConfig>): Prom
  * 重置配置为默认值
  */
 export async function resetToDefaultConfig(): Promise<void> {
-  const config = vscode.workspace.getConfiguration('flutterCleanArch');
+  const config = vscode.workspace.getConfiguration('cleanArch');
   
   await config.update('baseStructure', DEFAULT_BASE_STRUCTURE, vscode.ConfigurationTarget.Global);
   await config.update('featureStructure', DEFAULT_FEATURE_STRUCTURE, vscode.ConfigurationTarget.Global);

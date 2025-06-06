@@ -81,7 +81,7 @@ exports.DEFAULT_FEATURE_STRUCTURE = {
  * 获取插件配置
  */
 function getPluginConfig() {
-    const config = vscode.workspace.getConfiguration('flutterCleanArch');
+    const config = vscode.workspace.getConfiguration('cleanArch');
     return {
         baseStructure: config.get('baseStructure') || exports.DEFAULT_BASE_STRUCTURE,
         featureStructure: config.get('featureStructure') || exports.DEFAULT_FEATURE_STRUCTURE
@@ -92,7 +92,7 @@ exports.getPluginConfig = getPluginConfig;
  * 更新插件配置
  */
 async function updatePluginConfig(newConfig) {
-    const config = vscode.workspace.getConfiguration('flutterCleanArch');
+    const config = vscode.workspace.getConfiguration('cleanArch');
     if (newConfig.baseStructure) {
         await config.update('baseStructure', newConfig.baseStructure, vscode.ConfigurationTarget.Global);
     }
@@ -105,7 +105,7 @@ exports.updatePluginConfig = updatePluginConfig;
  * 重置配置为默认值
  */
 async function resetToDefaultConfig() {
-    const config = vscode.workspace.getConfiguration('flutterCleanArch');
+    const config = vscode.workspace.getConfiguration('cleanArch');
     await config.update('baseStructure', exports.DEFAULT_BASE_STRUCTURE, vscode.ConfigurationTarget.Global);
     await config.update('featureStructure', exports.DEFAULT_FEATURE_STRUCTURE, vscode.ConfigurationTarget.Global);
 }

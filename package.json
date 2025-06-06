@@ -1,9 +1,10 @@
 {
-  "name": "flutter-clean-arch-helper",
-  "displayName": "Flutter Clean Architecture Helper",
-  "description": "快速创建 Flutter Clean Architecture 目录结构的 VSCode 插件",
+  "name": "clean-arch-helper",
+  "displayName": "Clean Architecture Helper",
+  "description": "快速创建 Clean Architecture 目录结构的 VSCode 插件，支持 Flutter、React、Node.js 等项目",
   "version": "1.0.0",
   "publisher": "baoxin",
+  "icon": "icon.png",
   "author": {
     "name": "baoxin",
     "email": "v-baoxin@foxmail.com"
@@ -25,13 +26,17 @@
     "Snippets"
   ],
   "keywords": [
-    "flutter",
     "clean architecture",
     "directory structure",
-    "scaffold"
+    "scaffold",
+    "flutter",
+    "react",
+    "nodejs",
+    "project structure",
+    "code organization"
   ],
   "activationEvents": [
-    "onLanguage:dart"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -39,17 +44,17 @@
       {
         "command": "flutter-clean-arch.createBaseStructure",
         "title": "创建 Clean Architecture 基础结构",
-        "category": "Flutter Clean Arch"
+        "category": "Clean Arch"
       },
       {
         "command": "flutter-clean-arch.createFeature",
         "title": "创建 Feature 模块",
-        "category": "Flutter Clean Arch"
+        "category": "Clean Arch"
       },
       {
         "command": "flutter-clean-arch.configureStructure",
         "title": "配置目录结构",
-        "category": "Flutter Clean Arch"
+        "category": "Clean Arch"
       }
     ],
     "menus": {
@@ -57,12 +62,12 @@
         {
           "command": "flutter-clean-arch.createBaseStructure",
           "when": "explorerResourceIsFolder",
-          "group": "flutter-clean-arch@1"
+          "group": "clean-arch@1"
         },
         {
           "command": "flutter-clean-arch.createFeature",
           "when": "explorerResourceIsFolder",
-          "group": "flutter-clean-arch@2"
+          "group": "clean-arch@2"
         }
       ],
       "commandPalette": [
@@ -81,9 +86,9 @@
       ]
     },
     "configuration": {
-      "title": "Flutter Clean Architecture Helper",
+      "title": "Clean Architecture Helper",
       "properties": {
-        "flutterCleanArch.baseStructure": {
+        "cleanArch.baseStructure": {
           "type": "object",
           "default": {
             "lib": {
@@ -116,7 +121,7 @@
           },
           "description": "Clean Architecture 基础目录结构配置"
         },
-        "flutterCleanArch.featureStructure": {
+        "cleanArch.featureStructure": {
           "type": "object",
           "default": {
             "data": {
