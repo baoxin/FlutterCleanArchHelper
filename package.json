@@ -3,7 +3,11 @@
   "displayName": "Flutter Clean Architecture Helper",
   "description": "快速创建 Flutter Clean Architecture 目录结构的 VSCode 插件",
   "version": "1.0.0",
-  "publisher": "暴鑫",
+  "publisher": "baoxin",
+  "author": {
+    "name": "baoxin",
+    "email": "v-baoxin@foxmail.com"
+  },
   "engines": {
     "vscode": "^1.74.0"
   },

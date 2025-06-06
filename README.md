@@ -160,6 +160,10 @@ npm run compile
 
 欢迎提交 Issue 和 Pull Request！
 
+## 作者
+
+**baoxin** - [v-baoxin@foxmail.com](mailto:v-baoxin@foxmail.com)
+
 ## 许可证
 
 MIT License
