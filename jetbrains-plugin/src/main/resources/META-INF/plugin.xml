@@ -1,0 +1,81 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.baoxin.clean-arch-helper</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Clean Architecture Helper</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="v-baoxin@foxmail.com" url="https://github.com/baoxin">baoxin</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    一个用于快速创建 Clean Architecture 目录结构的 JetBrains 插件，支持 Flutter、React、Node.js 等项目。
+
+    <h3>功能特性</h3>
+    <ul>
+        <li><strong>🏗️ 创建基础结构</strong> - 快速创建完整的 Clean Architecture 基础目录结构</li>
+        <li><strong>🎯 创建 Feature 模块</strong> - 为每个功能模块快速创建标准的三层架构目录</li>
+        <li><strong>⚙️ 可配置的目录结构</strong> - 完全可自定义的目录结构配置</li>
+    </ul>
+
+    <h3>使用方法</h3>
+    <ul>
+        <li>在项目视图中右键点击目录，选择相应的 Clean Architecture 操作</li>
+        <li>使用 Tools 菜单中的 Clean Architecture 选项</li>
+        <li>通过 Find Action (Ctrl+Shift+A) 搜索相关命令</li>
+    </ul>
+    ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Application-level settings -->
+        <applicationConfigurable 
+            parentId="tools" 
+            instance="com.baoxin.cleanarch.settings.CleanArchConfigurable"
+            id="com.baoxin.cleanarch.settings.CleanArchConfigurable"
+            displayName="Clean Architecture Helper"/>
+        
+        <!-- Application service for settings -->
+        <applicationService 
+            serviceImplementation="com.baoxin.cleanarch.settings.CleanArchSettings"/>
+    </extensions>
+
+    <actions>
+        <!-- Main action group -->
+        <group id="CleanArchGroup" text="Clean Architecture" description="Clean Architecture Helper Actions">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="NewGroup"/>
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            
+            <action id="CreateBaseStructure" 
+                    class="com.baoxin.cleanarch.actions.CreateBaseStructureAction" 
+                    text="创建 Clean Architecture 基础结构" 
+                    description="创建完整的 Clean Architecture 基础目录结构">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt B"/>
+            </action>
+            
+            <action id="CreateFeature" 
+                    class="com.baoxin.cleanarch.actions.CreateFeatureAction" 
+                    text="创建 Feature 模块" 
+                    description="创建 Feature 模块的标准三层架构目录">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt F"/>
+            </action>
+            
+            <action id="ConfigureStructure" 
+                    class="com.baoxin.cleanarch.actions.ConfigureStructureAction" 
+                    text="配置目录结构" 
+                    description="配置 Clean Architecture 目录结构">
+                <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt C"/>
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
